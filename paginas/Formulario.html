@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pr-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendar</title>
+  <link rel="stylesheet" href="../css/styleform.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="text/javascript" src="../js/forms.js" defer></script>
+</head>
+<body>
+  <nav id="sidebar">
+    <ul>
+      <li>
+        <span class="logo">Analise</span>
+        <button onclick=toggleSidebar() id="toggle-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m313-480 155 156q11 11 11.5 27.5T468-268q-11 11-28 11t-28-11L228-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T468-692q11 11 11 28t-11 28L313-480Zm264 0 155 156q11 11 11.5 27.5T732-268q-11 11-28 11t-28-11L492-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T732-692q11 11 11 28t-11 28L577-480Z"/></svg>
+        </button>
+      </li>
+      <li>
+        <a href="/index.html">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M240-200h120v-200q0-17 11.5-28.5T400-440h160q17 0 28.5 11.5T600-400v200h120v-360L480-740 240-560v360Zm-80 0v-360q0-19 8.5-36t23.5-28l240-180q21-16 48-16t48 16l240 180q15 11 23.5 28t8.5 36v360q0 33-23.5 56.5T720-120H560q-17 0-28.5-11.5T520-160v-200h-80v200q0 17-11.5 28.5T400-120H240q-33 0-56.5-23.5T160-200Zm320-270Z"/></svg>
+          <span>Home</span>
+        </a>
+      </li>
+      <li>
+        <a href="dashboard.html">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M520-640v-160q0-17 11.5-28.5T560-840h240q17 0 28.5 11.5T840-800v160q0 17-11.5 28.5T800-600H560q-17 0-28.5-11.5T520-640ZM120-480v-320q0-17 11.5-28.5T160-840h240q17 0 28.5 11.5T440-800v320q0 17-11.5 28.5T400-440H160q-17 0-28.5-11.5T120-480Zm400 320v-320q0-17 11.5-28.5T560-520h240q17 0 28.5 11.5T840-480v320q0 17-11.5 28.5T800-120H560q-17 0-28.5-11.5T520-160Zm-400 0v-160q0-17 11.5-28.5T160-360h240q17 0 28.5 11.5T440-320v160q0 17-11.5 28.5T400-120H160q-17 0-28.5-11.5T120-160Zm80-360h160v-240H200v240Zm400 320h160v-240H600v240Zm0-480h160v-80H600v80ZM200-200h160v-80H200v80Zm160-320Zm240-160Zm0 240ZM360-280Z"/></svg>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <button onclick=toggleSubMenu(this) class="dropdown-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h207q16 0 30.5 6t25.5 17l57 57h320q33 0 56.5 23.5T880-640v400q0 33-23.5 56.5T800-160H160Zm0-80h640v-400H447l-80-80H160v480Zm0 0v-480 480Zm400-160v40q0 17 11.5 28.5T600-320q17 0 28.5-11.5T640-360v-40h40q17 0 28.5-11.5T720-440q0-17-11.5-28.5T680-480h-40v-40q0-17-11.5-28.5T600-560q-17 0-28.5 11.5T560-520v40h-40q-17 0-28.5 11.5T480-440q0 17 11.5 28.5T520-400h40Z"/></svg>
+          <span>Criar</span>
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z"/></svg>
+        </button>
+        <ul class="sub-menu">
+          <div>
+            <li><a href="#">Arquivo</a></li>
+            <li><a href="#">Documento</a></li>
+          </div>
+        </ul>
+      </li>
+      <li>
+        <button onclick=toggleSubMenu(this) class="dropdown-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m221-313 142-142q12-12 28-11.5t28 12.5q11 12 11 28t-11 28L250-228q-12 12-28 12t-28-12l-86-86q-11-11-11-28t11-28q11-11 28-11t28 11l57 57Zm0-320 142-142q12-12 28-11.5t28 12.5q11 12 11 28t-11 28L250-548q-12 12-28 12t-28-12l-86-86q-11-11-11-28t11-28q11-11 28-11t28 11l57 57Zm339 353q-17 0-28.5-11.5T520-320q0-17 11.5-28.5T560-360h280q17 0 28.5 11.5T880-320q0 17-11.5 28.5T840-280H560Zm0-320q-17 0-28.5-11.5T520-640q0-17 11.5-28.5T560-680h280q17 0 28.5 11.5T880-640q0 17-11.5 28.5T840-600H560Z"/></svg>
+          <span>Todo-Lists</span>
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z"/></svg>
+        </button>
+        <ul class="sub-menu">
+          <div>
+            <li><a href="#">Salvos</a></li>
+            <li><a href="#">Tarefas</a></li>
+          </div>
+        </ul>
+      </li>
+      <li class="active">
+        <a href="Formulario.html">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6 2q-.825 0-1.412.587Q4 3.175 4 4v16q0 .825.588 1.413Q5.175 22 6 22h12q.825 0 1.413-.587Q20 20.825 20 20V8l-6-6H6Zm6 8V4h6l-.025 6H12Zm-5 6h10v-2H7v2Zm0 4h10v-2H7v2Zm0-8h6v-2H7v2Z"/>
+          </svg>
+          <span>Formulario</span>
+        </a>
+      </li>
+      <li>
+        <a href="profile.html">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-240v-32q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v32q0 33-23.5 56.5T720-160H240q-33 0-56.5-23.5T160-240Zm80 0h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z"/></svg>
+          <span>Perfil</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <main>
+    <div class="container">
+      <h1>Formulário de Autoavaliação</h1>
+      <form id="formulario">
+        <label for="participante">participante:</label>
+        <input type="text" id="participante" name="participante" required>
+  
+        <label for="departamento">Qual o seu departamento?</label>
+        <select id="departamento" name="departamento" required>
+          <option value="" disabled selected>Selecione uma opção</option>
+          <option value="Comercial">Comercial</option>
+          <option value="Operacional">Operacional</option>
+          <option value="Recursos Humanos">Recursos Humanos</option>
+          <option value="Outros">Outros</option>
+        </select>
+  
+        <label for="genero">Qual o seu gênero?</label>
+        <select id="genero" name="genero" required>
+          <option value="" disabled selected>Selecione uma opção</option>
+          <option value="Feminino">Feminino</option>
+          <option value="Masculino">Masculino</option>
+          <option value=" Outro"> Outro</option>
+        </select>
+  
+        <label for="faixa_Etaria">Qual a sua faixa etária?</label>
+        <select id="faixa_Etaria" name="faixa_Etaria" required>
+          <option value="" disabled selected>Selecione uma opção</option>
+          <option value="Menos de 18 anos">Menos de 18 anos</option>
+          <option value="Médio">Médio</option>
+          <option value="18 a 25 anos">18 a 25 anos</option>
+          <option value="26 a 35 anos">26 a 35 anos</option>
+          <option value="36 a 50 anos">36 a 50 anos</option>
+          <option value="Acima de 50 anos">Acima de 50 anos</option>
+        </select>
+  
+        <label for="frequencia_de_Ansiedade">Com que frequência você sente ansiedade em situações do dia a dia?</label>
+        <select id="frequencia_de_Ansiedade" name="frequencia_de_Ansiedade" required>
+          <option value="" disabled selected>Selecione uma opção</option>
+          <option value="Nunca">Nunca</option>
+          <option value="Raramente">Raramente</option>
+          <option value="Algumas vezes">Algumas vezes</option>
+          <option value="Frequentemente">Frequentemente</option>
+          <option value="Sempre">Sempre</option>
+        </select>
+
+        <label for="nivel_Geral_de_Ansiedade">Como você avalia o seu nível geral de ansiedade atualmente?</label>
+        <select id="nivel_Geral_de_Ansiedade" name="nivel_Geral_de_Ansiedade" required>
+          <option value="" disabled selected>Selecione uma opção</option>
+          <option value="Nenhum">Nenhum</option>
+          <option value="Baixo">Baixo</option>
+          <option value="Médio">Médio</option>
+          <option value="Alto">Alto</option>
+        </select>
+
+        <label for="situacoes_de_Maior_Ansiedade">Em quais situações você percebe maior nível de ansiedade?</label>
+        <select id="situacoes_de_Maior_Ansiedade" name="situacoes_de_Maior_Ansiedade" required>
+          <option value="" disabled selected>Selecione uma opção</option>
+          <option value="Interações sociais">Interações sociais</option>
+          <option value="Reuniões de trabalho">Reuniões de trabalho</option>
+          <option value="Prazo de entregas">Prazo de entregas</option>
+          <option value="Problemas pessoais">Problemas pessoais</option>
+          <option value="Outros">Outros</option>
+        </select>
+
+        <label for="tensao_Corporal_Regular">Como você avalia o nível de tensão corporal que sente regularmente?</label>
+        <select id="tensao_Corporal_Regular" name="tensao_Corporal_Regular" required>
+          <option value="" disabled selected>Selecione uma opção</option>
+          <option value="Nenhum">Nenhum</option>
+          <option value="Baixo">Baixo</option>
+          <option value="Médio">Médio</option>
+          <option value="Alto">Alto</option>
+        </select>
+
+        <label for="tensao_Corporal_no_Trabalho">Você sente tensão corporal em atividades relacionadas ao trabalho?</label>
+        <select id="tensao_Corporal_no_Trabalho" name="tensao_Corporal_no_Trabalho" required>
+          <option value="" disabled selected>Selecione uma opção</option>
+          <option value="Nunca">Nunca</option>
+          <option value="Raramente">Raramente</option>
+          <option value="Algumas vezes">Algumas vezes</option>
+          <option value="Frequentemente">Frequentemente</option>
+          <option value="Sempre">Sempre</option>
+        </select>
+
+        <label for="cansaco_Mental">Como você avalia o seu nível de cansaço mental?</label>
+        <select id="cansaco_Mental" name="cansaco_Mental" required>
+          <option value="" disabled selected>Selecione uma opção</option>
+          <option value="Nenhum">Nenhum</option>
+          <option value="Baixo">Baixo</option>
+          <option value="Médio">Médio</option>
+          <option value="Alto">Alto</option>
+        </select>
+
+        <label for="situacoes_de_Cansaco_Mental"> O cansaço mental é mais perceptível em quais situações?</label>
+        <select id="situacoes_de_Cansaco_Mental" name="situacoes_de_Cansaco_Mental" required>
+          <option value="" disabled selected>Selecione uma opção</option>
+          <option value="Durante o trabalho">Durante o trabalho</option>
+          <option value="Após o trabalho">Após o trabalho</option>
+          <option value="Ao acordar">Ao acordar</option>
+          <option value="Outros">Outros</option>
+        </select>
+
+        <label for="relacionamento_com_Colegas">Como você avalia o seu relacionamento com os colegas de trabalho?</label>
+        <select id="relacionamento_com_Colegas" name="relacionamento_com_Colegas" required>
+          <option value="" disabled selected>Selecione uma opção</option>
+          <option value="Muito bom">Muito bom</option>
+          <option value="Bom">Bom</option>
+          <option value="Regular">Regular</option>
+          <option value="Ruim">Ruim</option>
+          <option value="Muito ruim">Muito ruim</option>
+        </select>
+        
+        <label for="relacionamento_com_Lideres">Como você avalia o seu relacionamento com os líderes da equipe?</label>
+        <select id="relacionamento_com_Lideres" name="relacionamento_com_Lideres" required>
+          <option value="" disabled selected>Selecione uma opção</option>
+          <option value="Muito bom">Muito bom</option>
+          <option value="Bom">Bom</option>
+          <option value="Regular">Regular</option>
+          <option value="Ruim">Ruim</option>
+          <option value="Muito ruim">Muito ruim</option>
+        </select>
+
+        <label for="diferenca_Real_x_Autoavaliacao">Você percebe uma diferença entre o nível de ansiedade real que sente e o que acredita sentir (autoavaliação)?</label>
+        <select id="diferenca_Real_x_Autoavaliacao" name="diferenca_Real_x_Autoavaliacao" required>
+          <option value="" disabled selected>Selecione uma opção</option>
+          <option value="Sim">Sim</option>
+          <option value="Não">Não</option>
+          <option value="Não sei avaliar">Não sei avaliar</option>
+        </select>
+  
+        
+        <button type="submit">Enviar</button>
+      </form>
+      <div id="mensagem"></div>
+      
+    </div>
+  </main>
+</body>
+</html>

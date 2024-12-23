@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gráfico de Barras Empilhadas</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <canvas id="stackedBarChart"></canvas>
+    <script>
+        const url = "https://script.google.com/macros/s/AKfycbx6ySDNZU2q_00bvXcgDj0E0IpZWee6Ae_JVTaNO6BUTTqAbu2StyRKmSkktBpHEc6W/exec";
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                // Processar os dados da planilha
+                const departamentoFaixaEtaria = {};
+                const totalPorDepartamentoFaixa = {};
+
+                data.slice(1).forEach(item => { // Ignorar o cabeçalho
+                    const depto = item[1]; // Coluna de departamento
+                    const faixa = item[3]; // Coluna de faixa etária
+                    const genero = item[2]; // Coluna de gênero
+
+                    const key = `${depto}-${faixa}`;
+
+                    if (!departamentoFaixaEtaria[key]) {
+                        departamentoFaixaEtaria[key] = { Masculino: 0, Feminino: 0 };
+                        totalPorDepartamentoFaixa[key] = 0;
+                    }
+                    departamentoFaixaEtaria[key][genero]++;
+                    totalPorDepartamentoFaixa[key]++;
+                });
+
+                const labels = Object.keys(departamentoFaixaEtaria);
+                const masculino = labels.map(label => (departamentoFaixaEtaria[label].Masculino / totalPorDepartamentoFaixa[label]) * 100);
+                const feminino = labels.map(label => (departamentoFaixaEtaria[label].Feminino / totalPorDepartamentoFaixa[label]) * 100);
+
+                var ctx = document.getElementById('stackedBarChart').getContext('2d');
+                var stackedBarChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Masculino',
+                            data: masculino,
+                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1
+                        }, {
+                            label: 'Feminino',
+                            data: feminino,
+                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            x: {
+                                stacked: true
+                            },
+                            y: {
+                                stacked: true,
+                                beginAtZero: true,
+                                ticks: {
+                                    callback: function(value) {
+                                        return value + '%';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(error => console.error('Erro ao buscar dados:', error));
+    </script>
+</body>
+</html>

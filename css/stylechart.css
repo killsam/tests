@@ -1,0 +1,66 @@
+/* Container principal */
+.chart-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 20px;
+    background-color: #f9f9f900;
+  }
+  
+  /* Linha dos gráficos */
+  .chart-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  /* Card do gráfico */
+  .chart-card {
+    flex: 1 1 calc(50% - 20px); /* 50% de largura com gap */
+    background: #ffffff00;
+    border: 1px solid ffffff6e;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(77, 76, 76, 0.1);
+    padding: 20px;
+    text-align: center;
+    box-sizing: border-box;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  
+  .chart-card p {
+    font-family: "Poppins", sans-serif;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.4;
+  }
+  
+  /* Efeito de hover nos cards */
+  .chart-card:hover {
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+  }
+  
+  /* Ajuste do canvas */
+  .chart-card canvas {
+    width: 100% !important;
+    height: auto !important;
+  }
+  
+  /* Full-width card para o Line Chart */
+  .full-width .chart-card {
+    flex: 1 1 100%;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .chart-row {
+      flex-direction: column;
+    }
+  
+    .chart-card {
+      flex: 1 1 100%;
+    }
+  }
+  
